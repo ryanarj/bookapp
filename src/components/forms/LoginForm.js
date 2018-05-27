@@ -5,6 +5,7 @@ import Validator from 'validator';
 import InlineError from '../messages/InlineError';
 
 class LoginForm extends React.Component{
+    // Init states
     state = {
         data: {
             email: '',
@@ -14,6 +15,7 @@ class LoginForm extends React.Component{
         errors: {}
     }
 
+    // When clicked, func will validate the state and check for erros
     onSubmit = () => {
         const errors = this.validate(this.state.data);
         this.setState({ errors });
@@ -21,7 +23,8 @@ class LoginForm extends React.Component{
             this.props.submit(this.state.data);
         }
     }
-
+    
+    // Validates if the state is indeed not empty 
     validate = (data) => {
         const errors = {};
         if(!Validator.isEmail(data.email)) errors.email = "Invalid Email";

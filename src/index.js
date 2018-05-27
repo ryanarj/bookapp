@@ -10,8 +10,10 @@ import rootReducer from './rootReducer';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+// Create a the store that will hold the data of the app.
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
+// Add provider that will take in the store
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}><App /></Provider>
