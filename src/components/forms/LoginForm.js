@@ -1,6 +1,6 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
-import {Form, Button} from 'semantic-ui-react';
+import {Form, Button, Message } from 'semantic-ui-react';
 import Validator from 'validator';
 import InlineError from '../messages/InlineError';
 
@@ -13,16 +13,18 @@ class LoginForm extends React.Component{
         },
         loading: false,
         errors: {}
-    }
+    };
 
     // When clicked, func will validate the state and check for erros
     onSubmit = () => {
         const errors = this.validate(this.state.data);
         this.setState({ errors });
-        if (Object.keys(errors).length===0){
-            this.props.submit(this.state.data);
+        if (Object.keys(errors).length === 0) {
+          this.setState({ loading: true });
+          this.props
+            .submit(this.state.data);
         }
-    }
+      };
     
     // Validates if the state is indeed not empty 
     validate = (data) => {
@@ -30,7 +32,7 @@ class LoginForm extends React.Component{
         if(!Validator.isEmail(data.email)) errors.email = "Invalid Email";
         if(!data.password) errors.password = "Please add a password.";
         return errors;
-    }
+    };
 
     onChange = e => this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value }
     });
@@ -39,6 +41,11 @@ class LoginForm extends React.Component{
         const { data, errors } = this.state;
         return (
             <Form onSubmit={this.onSubmit}>
+                { errors.global && 
+                (<Message negative>
+                    <Message.Header>There is problem here.. </Message.Header>
+                    <p>{errors.global}</p>
+                </Message>)}
                 <Form.Field error={!!errors.email}>
                     <label htmlFor="email">Email</label>
                     <input 
