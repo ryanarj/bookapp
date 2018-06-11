@@ -9,7 +9,7 @@ class Login extends React.Component{
     // History (router) to redirect to the home page of the app.
     submit = data => {
         // Init the login action with the user credentials
-        this.props.login(data).then(() => this.props.history.push("/"));
+        this.props.login(data).then(() => this.props.history.push("/dashboard"));
     };
 
     render() {

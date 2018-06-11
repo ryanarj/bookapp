@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension'
@@ -23,7 +23,9 @@ if(localStorage.bookappJWT) {
 // Add provider that will take in the store
 ReactDOM.render(
     <BrowserRouter>
-        <Provider store={store}><App /></Provider>
+        <Provider store={store}>
+            <Route component={App} />
+        </Provider>
     </BrowserRouter>, 
     document.getElementById('root'));
 registerServiceWorker();
