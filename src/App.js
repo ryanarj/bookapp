@@ -3,6 +3,7 @@ import {Route} from 'react-router';
 import PropTypes from 'prop-types';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
+import SignUp from './components/pages/SignUp';
 import Dashboard from './components/pages/Dashboard';
 import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';

@@ -24,7 +24,6 @@ class Login extends React.Component{
 }
 
 Login.propTypes = {
-    // Have the history and the push avaliable
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
