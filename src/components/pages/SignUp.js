@@ -2,7 +2,7 @@ import React from 'react';
 import SignUpForm from '../forms/SignUpForm';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { signup } from '../../actions/auth';
+import { signup } from '../../actions/users';
 
 class SignUp extends React.Component{
     submit = (data) => 
@@ -17,7 +17,7 @@ class SignUp extends React.Component{
     }
 }
 
-SignUp.PropTypes = {
+SignUp.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,

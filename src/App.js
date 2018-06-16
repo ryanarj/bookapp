@@ -12,11 +12,12 @@ const App = ({location}) =>
   <div className="ui container">
     <Route location={location} path="/" exact component={Home} />
     <GuestRoute location={location} path="/login" exact component={Login} />
+    <GuestRoute location={location} path="/signup" exact component={SignUp} />
     <UserRoute location={location} path="/dashboard" exact component={Dashboard} />
   </div>;
 
 
-App.PropTypes = {
+App.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
   }).isRequired
