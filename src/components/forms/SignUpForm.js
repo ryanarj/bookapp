@@ -35,41 +35,47 @@ class SignUpForm extends React.Component{
         return errors;
     };
 
-    onChange = e => this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value }
+    onChange = e =>
+    this.setState({
+      ...this.state,
+      data: { ...this.state.data, [e.target.name]: e.target.value }
     });
-
-    render(){
+    
+    render() {
         const { data, errors, loading } = this.state;
+    
         return (
-            <Form onSubmit={this.onSubmit} loading={loading}>
-                { errors.global && 
-                (<Message negative>
-                    <Message.Header>There is problem here.. </Message.Header>
-                    <p>{errors.global}</p>
-                </Message>)}
-                <Form.Field error={!!errors.email}>
-                    <label htmlFor="email">Email</label>
-                    <input 
-                    id="emailid" type="email" name="email" 
-                    placeholder="email@email.com"
-                    onChange={this.onChange} value={data.email}
-                    />
-                    {errors.email && <InlineError text={errors.email} />}
-                </Form.Field>
-
-                <Form.Field error={!!errors.password}>
-                    <label htmlFor="password">Password</label>
-                    <input 
-                    id="passwordid" type="password" name="password" 
-                    value={data.password} onChange={this.onChange}
-                    />
-                    {errors.password && <InlineError text={errors.password} />}
-                </Form.Field>
-                <Button primary>Sign Up</Button>
-            </Form>
+          <Form onSubmit={this.onSubmit} loading={loading}>
+            <Form.Field error={!!errors.email}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="email@email.com"
+                value={data.email}
+                onChange={this.onChange}
+              />
+              {errors.email && <InlineError text={errors.email} />}
+            </Form.Field>
+    
+            <Form.Field error={!!errors.password}>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={data.password}
+                onChange={this.onChange}
+              />
+              {errors.password && <InlineError text={errors.password} />}
+            </Form.Field>
+    
+            <Button primary>Sign Up</Button>
+          </Form>
         );
+      }
     }
-}
 
 SignUpForm.propsTypes = {
     submit: PropsTypes.func.isRequired
