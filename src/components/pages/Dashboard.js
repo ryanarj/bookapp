@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import ConfirmEmailMessage from '../messages/ConfirmEmailMessage';
+import { Message } from 'semantic-ui-react';
+import ProfileForm from '../forms/ProfileForm';
 
-const Dashboard = ({ isConfirmed }) => (
-    <div>
-        {!isConfirmed && <ConfirmEmailMessage />}
-    </div>
+const Dashboard = () => (
+    <ProfileForm
+    />
 );
 
 Dashboard.propTypes = {
