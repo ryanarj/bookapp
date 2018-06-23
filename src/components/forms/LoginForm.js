@@ -15,6 +15,11 @@ class LoginForm extends React.Component{
         errors: {}
     };
 
+    onChange = e => 
+        this.setState({ 
+            data: { ...this.state.data, [e.target.name]: e.target.value }
+    });
+
     // When clicked, func will validate the state and check for erros
     onSubmit = () => {
         const errors = this.validate(this.state.data);
@@ -34,22 +39,20 @@ class LoginForm extends React.Component{
         return errors;
     };
 
-    onChange = e => this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value }
-    });
-
     render(){
-        const { data, errors } = this.state;
+        const { data, errors, loading } = this.state;
         return (
-            <Form onSubmit={this.onSubmit}>
+            <Form onSubmit={this.onSubmit} loading={loading}>
                 { errors.global && 
                 (<Message negative>
                     <Message.Header>There is problem here.. </Message.Header>
                     <p>{errors.global}</p>
-                </Message>)}
+                </Message>
+                )}
                 <Form.Field error={!!errors.email}>
                     <label htmlFor="email">Email</label>
                     <input 
-                    id="emailid" type="email" name="email" 
+                    id="email" type="email" name="email" 
                     placeholder="Enter in a valid email..."
                     onChange={this.onChange} value={data.email}
                     />
@@ -58,7 +61,7 @@ class LoginForm extends React.Component{
                 <Form.Field error={!!errors.password}>
                     <label htmlFor="password">Password</label>
                     <input 
-                    id="passwordid" type="password" name="password" 
+                    id="password" type="password" name="password" 
                     placeholder="Enter in your password.."
                     value={data.password} onChange={this.onChange}
                     />

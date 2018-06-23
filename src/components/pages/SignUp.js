@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import { signup } from '../../actions/users';
 
 class SignUp extends React.Component{
-    submit = (data) => 
+    submit = data => 
         this.props.signup(data).then(() => this.props.history.push('/dashboard'));
 
     render(){
