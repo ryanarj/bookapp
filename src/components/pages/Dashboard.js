@@ -4,10 +4,15 @@ import {connect} from 'react-redux';
 import { Message } from 'semantic-ui-react';
 import ProfileForm from '../forms/ProfileForm';
 
-const Dashboard = () => (
-    <ProfileForm
-    />
-);
+class Dashboard extends React.Component{
+    render(){
+        return(
+            <div>
+                <ProfileForm/>
+            </div>
+        );
+    }
+}
 
 Dashboard.propTypes = {
     isConfirmed: PropTypes.bool.isRequired

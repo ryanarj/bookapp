@@ -1,10 +1,10 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 
 class ProfileForm extends React.Component {
     state = {
         data: {
-          name: "",
+          name: "Ryan",
           year: "",
           description: ""
 
@@ -18,13 +18,12 @@ class ProfileForm extends React.Component {
     
         return (
             <Card>
-                <Image src='/assets/images/avatar/large/matthew.png' />
                 <Card.Content>
                 <Card.Header>{data.name}</Card.Header>
                 <Card.Meta>
-                    <span className='date'>{data.year}</span>
+                    <span className='date'>Year{data.year}</span>
                 </Card.Meta>
-                <Card.Description>{data.description}</Card.Description>
+                <Card.Description>Test{data.description}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                 </Card.Content>

@@ -49,7 +49,7 @@ class LoginForm extends React.Component{
                     <p>{errors.global}</p>
                 </Message>
                 )}
-                <Form.Field error={!!errors.email}>
+                <Form.Field error={!!errors.email} width="5">
                     <label htmlFor="email">Email</label>
                     <input 
                     id="email" type="email" name="email" 
@@ -58,7 +58,7 @@ class LoginForm extends React.Component{
                     />
                     {errors.email && <InlineError text={errors.email} />}
                 </Form.Field>
-                <Form.Field error={!!errors.password}>
+                <Form.Field error={!!errors.password} width="5">
                     <label htmlFor="password">Password</label>
                     <input 
                     id="password" type="password" name="password" 

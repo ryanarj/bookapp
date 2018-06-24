@@ -10,6 +10,16 @@ import GuestRoute from './components/routes/GuestRoute';
 
 const App = ({location}) =>   
   <div className="ui container">
+    <div class="ui secondary pointing menu">
+        <a class="active item">Profile</a>
+        <a class="item">Messages</a>
+        <a class="item">About</a>
+        <div class="right menu">
+            <a class="ui item">Logout</a>
+        </div>
+    </div>
+    <div class="ui segment">
+    </div>
     <Route location={location} path="/" exact component={Home} />
     <GuestRoute location={location} path="/login" exact component={Login} />
     <GuestRoute location={location} path="/signup" exact component={SignUp} />
