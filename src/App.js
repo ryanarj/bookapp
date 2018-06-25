@@ -7,19 +7,12 @@ import SignUp from './components/pages/SignUp';
 import Dashboard from './components/pages/Dashboard';
 import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';
+import NavigationBar from './components/navigation/NavigationBar'
+import {connect} from 'react-redux';
 
 const App = ({location}) =>   
   <div className="ui container">
-    <div class="ui secondary pointing menu">
-        <a class="active item">Profile</a>
-        <a class="item">Messages</a>
-        <a class="item">About</a>
-        <div class="right menu">
-            <a class="ui item">Logout</a>
-        </div>
-    </div>
-    <div class="ui segment">
-    </div>
+    <NavigationBar/>
     <Route location={location} path="/" exact component={Home} />
     <GuestRoute location={location} path="/login" exact component={Login} />
     <GuestRoute location={location} path="/signup" exact component={SignUp} />
@@ -33,4 +26,10 @@ App.propTypes = {
   }).isRequired
 }
 
-export default App;
+function mapStateToProps(state){
+  return {
+    isAuth: !!state.user.email
+  }
+}
+
+export default connect(mapStateToProps, {})(App);
