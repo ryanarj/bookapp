@@ -6,18 +6,14 @@ import * as actions from '../../actions/auth';
 import { connect } from "react-redux";
 
 const NavigationBar = ({user, logout}) => (
-<Menu>
-    <div class="ui secondary pointing menu">
-        <a  as={Link} to="/" class="active item">Profile</a>
-        <a class="item">Messages</a>
-        <a class="item">About</a>
-        <div class="right menu">
+    <Menu >
+        <Menu class="ui secondary pointing menu">
+            <a as={Link} to="/dashboard" class="active item">Profile</a>
+            <a class="item">Messages</a>
+            <a class="item">About</a>
             <a class="ui item" onClick={() => logout()}>Logout</a>
-        </div>
-    </div>
-    <div class="ui segment">
-    </div>
-</Menu>
+        </Menu>
+    </Menu>
 );
 
 NavigationBar.propTypes = {
