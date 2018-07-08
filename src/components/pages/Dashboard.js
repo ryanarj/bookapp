@@ -1,28 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { Message } from 'semantic-ui-react';
 import ProfileForm from '../forms/ProfileForm';
 import CommentForm from '../forms/CommentForm';
+import {allBlogPostsSelector} from '../../reducers/blogPosts';
+import AddBlogPostCta from '../ctas/AddBlogPostCta';
 
-class Dashboard extends React.Component{
-    render(){
-        return(
-            <div>
-                <ProfileForm />
-                <CommentForm />
-            </div>
-        );
-    }
-}
+const Dashboard = (blogPosts) => (
+    <div>
+        {<ProfileForm />}
+        {<AddBlogPostCta/>}
+    </div>
+)
 
 Dashboard.propTypes = {
-    isConfirmed: PropTypes.bool.isRequired
+    blogPosts: PropTypes.arrayOf(
+        PropTypes.shape({
+        subject: PropTypes.string.isRequired 
+    }).isRequired).isRequired
 }
 
 function mapsStateToProps(state){
     return {
-        isConfirmed: !!state.user.confirmed
+        blogPosts: allBlogPostsSelector
     }
 }
 

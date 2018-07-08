@@ -8,6 +8,7 @@ import Dashboard from './components/pages/Dashboard';
 import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';
 import NavigationBar from './components/navigation/NavigationBar'
+import NewBlogPost from './components/pages/NewBlogPost';
 import {connect} from 'react-redux';
 
 const App = ({location}) =>   
@@ -17,6 +18,7 @@ const App = ({location}) =>
     <GuestRoute location={location} path="/login" exact component={Login} />
     <GuestRoute location={location} path="/signup" exact component={SignUp} />
     <UserRoute location={location} path="/dashboard" exact component={Dashboard} />
+    <UserRoute location={location} path="/blogPosts/new" exact component={NewBlogPost} />
   </div>;
 
 

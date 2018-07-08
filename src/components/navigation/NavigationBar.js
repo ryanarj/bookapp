@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Menu } from "semantic-ui-react";
+import { Menu, Image, Dropdown } from "semantic-ui-react";
 import {Link} from 'react-router-dom';
 import * as actions from '../../actions/auth';
 import { connect } from "react-redux";
+import gravatarUrl from 'gravatar-url';
 
 const NavigationBar = ({user, logout}) => (
-    <Menu >
-        <Menu class="ui secondary pointing menu">
-            <a as={Link} to="/dashboard" class="active item">Profile</a>
-            <a class="item">Messages</a>
-            <a class="item">About</a>
-            <a class="ui item" onClick={() => logout()}>Logout</a>
-        </Menu>
+    <Menu secondary pointing>
+        <Menu.Item as={Link} to="/dashboard">Profile</Menu.Item>
+        <Menu.Menu position="right">
+            <Menu.Item as={Link} to="/signup">Sign Up</Menu.Item>
+            <Menu.Item class="ui item" onClick={() => logout()}>Logout</Menu.Item>
+        </Menu.Menu>
     </Menu>
 );
 
