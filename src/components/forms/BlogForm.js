@@ -78,7 +78,7 @@ class BlogForm extends React.Component {
                 </Form.Field>
 
                 <Form.Field error={!!errors.author}>
-                  <label htmlFor="authors">Blog Author</label>
+                  <label htmlFor="author">Blog Author</label>
                   <input
                     type="text"
                     id="author"

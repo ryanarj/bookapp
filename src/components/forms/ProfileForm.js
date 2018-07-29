@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 class ProfileForm extends React.Component {
     state = {
@@ -14,14 +14,14 @@ class ProfileForm extends React.Component {
     };
 
     render() {
-        const { data, errors, loading } = this.state;
+        const { data } = this.state;
     
         return (
             <Card>
                 <Card.Content>
                 <Card.Header>{data.name}</Card.Header>
                 <Card.Meta>
-                    <span className='date'>Year{data.year}</span>
+                    <span class='date'>Year{data.year}</span>
                 </Card.Meta>
                 <Card.Description>Test{data.description}</Card.Description>
                 </Card.Content>

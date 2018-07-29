@@ -6,7 +6,7 @@ import axios from 'axios';
 class SearchBlogForm extends React.Component{
 
     state = {
-        query: '',
+        query: "",
         loading: false,
         options: [],
         blogs: {}
@@ -21,11 +21,9 @@ class SearchBlogForm extends React.Component{
     }
 
     onChange = (e, data) => {
-        this.setState({
-            query: data
-        });
-        this.props.onBlogSelect(this.state.blogs[data.value])
-    }
+        this.setState({ query: data.value });
+        this.props.onBlogSelect(this.state.blogs[data.value]);
+      };
 
     fetchOptions = () => {
         if (!this.state.query) return;
@@ -35,6 +33,7 @@ class SearchBlogForm extends React.Component{
             .then(blogs => {
                 const options = [];
                 const blogHash = {};
+                console.log("Blogs "+blogs);
                 blogs.forEach(blog => {
                     blogHash[blog.id] = blog;
                     options.push({
@@ -53,7 +52,7 @@ class SearchBlogForm extends React.Component{
             <Dropdown
             search
             fluid
-            placeholder="Serach for a blog"
+            placeholder="Search for a blog"
             value={this.state.query}
             onSearchChange={this.onSearchChange}
             options={this.state.options}

@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ProfileForm from '../forms/ProfileForm';
-import CommentForm from '../forms/CommentForm';
 import {allBlogPostsSelector} from '../../reducers/blogPosts';
 import AddBlogPostCta from '../ctas/AddBlogPostCta';
 
-const Dashboard = (blogPosts) => (
+const Dashboard = () => (
     <div>
         {<ProfileForm />}
         {<AddBlogPostCta/>}

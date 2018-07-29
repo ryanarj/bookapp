@@ -9,5 +9,10 @@ export default {
         axios.post('/api/users', {user}).then(res => res.data.user),
       fetchAll : () =>
         axios.get('/api/users').then(res => res.data.user)
- }
+ },
+ blogs: {
+    fetchAll: () => axios.get("/api/blogs").then(res => res.data.blogs),
+    create: blog =>
+      axios.post("/api/blog", { blog }).then(res => res.data.blog)
 }
+};
