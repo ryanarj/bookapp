@@ -106,7 +106,7 @@ class BlogForm extends React.Component {
             </Grid.Row>
 
             <Grid.Row>
-              <Button primary>Save</Button>
+                <Button primary>Save</Button>
             </Grid.Row>
           </Grid>
         </Form>
