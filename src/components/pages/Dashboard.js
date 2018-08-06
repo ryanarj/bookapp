@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import ProfileForm from '../forms/ProfileForm';
 import {allBlogPostsSelector} from '../../reducers/blogPosts';
 import AddBlogPostCta from '../ctas/AddBlogPostCta';
+import SearchBlogPostCta from '../ctas/SearchBlogPostCta';
 import {fetchBlogs} from '../../actions/blogs'
 
 class Dashboard extends React.Component {
@@ -13,8 +14,8 @@ class Dashboard extends React.Component {
     render(){
         return(
             <div>
+            {<SearchBlogPostCta/>}
             {<AddBlogPostCta/>}
-            {<ProfileForm/>}
             </div>
         );
     }
