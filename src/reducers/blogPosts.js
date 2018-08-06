@@ -1,9 +1,10 @@
 import {createSelector} from 'reselect';
-import {BLOGS_FETCHED} from '../types';
+import {BLOGS_FETCHED, BLOG_CREATED} from '../types';
 
 export default function blogPosts(state = {}, action = {}){
     switch (action.type){
         case BLOGS_FETCHED:
+        case BLOG_CREATED:
             return { ...state, ...action.data.entities.blogs};
         default: 
             return state;

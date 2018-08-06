@@ -6,10 +6,9 @@ import InlineError from "../messages/InlineError";
 class BlogForm extends React.Component {
   state = {
     data: {
-      id: this.props.blog.id,
-      title: this.props.blog.title,
-      author: this.props.blog.author,
-      body: this.props.blog.body,
+      title: '',
+      author: '',
+      body: '',
     },
     index: 0,
     loading: false,
@@ -19,7 +18,6 @@ class BlogForm extends React.Component {
   componentWillReceiveProps(props) {
     this.setState({
         data: {
-            id: this.props.blog.id,
             title: this.props.blog.title,
             author: this.props.blog.author,
             body: this.props.blog.body,
@@ -39,6 +37,7 @@ class BlogForm extends React.Component {
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
+      console.log(this.state.data);
       this.props
         .submit(this.state.data)
         .catch(err =>
@@ -92,14 +91,14 @@ class BlogForm extends React.Component {
 
                 <Form.Field error={!!errors.pages}>
                   <label htmlFor="body">Body</label>
-                  <input
+                  <textarea
                     disabled={data.body === undefined}
                     type="text"
                     id="body"
                     name="body"
                     value={data.body !== undefined ? data.body : "Loading..."}
                     onChange={this.onChange}
-                  />
+                  ></textarea>
                   {errors.body && <InlineError text={errors.body} />}
                 </Form.Field>
               </Grid.Column>
@@ -116,9 +115,7 @@ class BlogForm extends React.Component {
 }
 
 BlogForm.propTypes = {
-  submit: PropTypes.func.isRequired,
   blog: PropTypes.shape({
-    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,

@@ -1,28 +1,36 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
-import SearchBlogForm from '../forms/SearchBlogForm';
 import BlogForm from '../forms/BlogForm';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import {createBlog} from '../../actions/blogs'
 
 class NewBlogPost extends React.Component{
     state = {
-        blogPost: null
+        blog: null
     }
 
     onBlogSelect = blog => this.setState({ blog });
 
-    addBlog = () => console.log('Hi');
+    addBlog = (blog) => this.props
+        .createBlog(blog)
+        .then(() => this.props.history.push("/dashboard"));
 
     render() {
         return (
             <Segment>
                 <h1>Add a new blog post.</h1>
-                <SearchBlogForm onBlogSelect={this.onBlogSelect} />
-                {this.state.blog && (
-                    <BlogForm sumbit={this.addBlog} blog={this.state.blog} />
-                )}
+                <BlogForm sumbit={this.addBlog} blog={this.state.blog} />
             </Segment>
         );
     }
 }
 
-export default NewBlogPost;
+NewBlogPost.propsTypes = {
+    createBlog: PropTypes.func.isRequired,
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }).isRequired
+};
+
+export default connect(null, {createBlog})(NewBlogPost);

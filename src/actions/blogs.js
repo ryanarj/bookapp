@@ -1,5 +1,5 @@
 import api from '../api';
-import {BLOGS_FETCHED} from '../types';
+import {BLOGS_FETCHED, BLOG_CREATED} from '../types';
 import {normalize} from 'normalizr';
 import {blogSchema} from '../schemas';
 
@@ -8,7 +8,15 @@ const blogsFetched = (data) => ({
     data
 })
 
+const blogCreated = (data) => ({
+    type: BLOG_CREATED,
+    data
+})
+
 export const fetchBlogs = () => (dispatch) =>
     api.blogs
         .fetchAll()
         .then(blogs => dispatch(blogsFetched( normalize(blogs, [blogSchema]))));
+
+export const createBlog = (data) => (dispatch) =>
+    api.blogs.create(data).then(blog => dispatch(blogCreated(normalize(blog, blogSchema))));

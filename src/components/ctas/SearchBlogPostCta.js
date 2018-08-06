@@ -10,7 +10,7 @@ const SearchBlogPostCta = (props) => (
             <Card.Header> 
                 Search for blog post
             </Card.Header>
-            <Link to="/blogPosts/new">
+            <Link to="/blogPosts/search">
                 <Icon name="search" size="massive"/>
             </Link>
         </Card.Content>
